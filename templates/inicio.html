@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Tablero de mensajes</title>
+</head>
+<body>
+  <h1>Tablero de mensajes</h1>
+  <p>Total de mensajes: {{ mensajes|length }}</p>
+  <ul>
+    {% for mensaje in mensajes %}
+      <li>{{ mensaje.texto }}</li>
+    {% empty %}
+      <li>Todavía no hay mensajes.</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
