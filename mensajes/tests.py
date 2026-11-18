@@ -10,6 +10,10 @@ class PruebasMensaje(TestCase):
 
     def test_contenido_modelo(self):
         self.assertEqual(self.mensaje.texto, "Esta es una prueba.")
+        self.assertEqual(self.mensaje.autor, "Anónimo")
+
+    def test_str_modelo(self):
+        self.assertEqual(str(self.mensaje), "Esta es una prueba.")
 
     def test_url_existe_en_ubicacion_correcta(self):
         respuesta = self.client.get("/")
@@ -20,6 +24,8 @@ class PruebasMensaje(TestCase):
         self.assertEqual(respuesta.status_code, 200)
         self.assertTemplateUsed(respuesta, "inicio.html")
         self.assertContains(respuesta, "Esta es una prueba.")
+        self.assertContains(respuesta, "Anónimo")
+        self.assertContains(respuesta, " de ")
 
 
 class PruebasBaseDatosVacia(TestCase):
